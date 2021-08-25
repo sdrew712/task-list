@@ -1,25 +1,7 @@
 const textForm = document.getElementById("text-form")
 const inputText = document.getElementById("input-text")
 const taskListContainer = document.getElementById("tasklist-container");
-const inspiroBtn = document.getElementById("inspiro-btn")
-const inspiroContainer = document.getElementById("inspiro-container")
 
-document.getElementById("complimentButton").onclick = function () {
-  axios.get("http://localhost:4000/api/compliment")
-    .then(function (res) {
-      const data = res.data;
-      alert(data);
-    });
-};
-    
-document.getElementById("fortuneButton").onclick = function () {
-  axios.get("http://localhost:4000/api/fortune")
-    .then(function (res) {
-      const data = res.data;
-      alert(data);
-    });
-};
-    
 
 function displayTaskList(arr){
   while(taskListContainer.firstChild){
@@ -63,22 +45,3 @@ textForm.addEventListener('submit', (e) => {
 
   inputText.value = '';
 })
-
-inspiroBtn.addEventListener("click", getInspiration)
-
-function getInspiration(){
-
-  let randomNumber = Math.floor(Math.random() * 1643);
-
-  fetch("https://type.fit/api/quotes")
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    inspiration = data[randomNumber];
-
-    console.log(inspiration.text);
-    
-    inspiroContainer.innerHTML = JSON.stringify(inspiration.text);
-  });
-}

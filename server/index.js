@@ -9,10 +9,6 @@ app.use(cors());
 
 app.use(express.json()); // When we want to be able to accept JSON.
 
-app.get("/api/compliment", controller.getCompliment);
-
-app.get("/api/fortune", controller.getFortune);
-
 app.post("/api/display", controller.displayText)
 
 app.delete("/api/display/:id", controller.deleteTask)
